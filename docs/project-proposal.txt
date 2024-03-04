@@ -1,4 +1,4 @@
-Idea 1: Beer Rating App
+Beer Rating App
 * Premise: good reads for beer
   - Allows users to create a wishlist of beers
   - Allows user to review beers they have already tried
