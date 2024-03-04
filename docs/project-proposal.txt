@@ -17,3 +17,8 @@ Idea 1: Beer Rating App
   - Google maps 
   - Camera api
   - Drizly api - https://rapidapi.com/blog/directory/drizly/
+* Stack:
+  - React frontend
+  - FastAPI backend
+  - Mongo DB
+  - Github OAuth
