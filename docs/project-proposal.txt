@@ -1,1 +1,19 @@
-
+Idea 1: Beer Rating App
+* Premise: good reads for beer
+  - Allows users to create a wishlist of beers
+  - Allows user to review beers they have already tried
+* Potential implementations:
+  - Locate specific beer nearby
+  - User uploads photos of beer
+  - Add a beer if it's not already on the app 
+  - Follow other users
+  - Establishment specific profiles to upload their beers, rate their beers, etc
+  - Within wishlist have google maps for nearby purchases/drizzly delivery
+* Database:
+  - Beer database for all beers and their descriptions
+  - Person database to store beers they have tried, reviewed, and added to wishlist
+* APIs:
+  - Beer api - https://sampleapis.com/api-list/beers
+  - Google maps 
+  - Camera api
+  - Drizly api - https://rapidapi.com/blog/directory/drizly/
