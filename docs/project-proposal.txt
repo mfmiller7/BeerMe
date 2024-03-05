@@ -11,9 +11,9 @@ Beer Rating App
   - Within wishlist have google maps for nearby purchases/drizzly delivery
 * Database:
   - Beer database for all beers and their descriptions
-  - Person database to store beers they have tried, reviewed, and added to wishlist
+  - User database to store beers they have tried, reviewed, and added to wishlist
 * APIs:
-  - Beer api - https://sampleapis.com/api-list/beers, https://openbeer.github.io/
+  - Beer api - https://sampleapis.com/api-list/beers, https://openbeer.github.io/, https://punkapi.com/documentation/v2
   - Google maps 
   - Camera api
   - Drizly api - https://rapidapi.com/blog/directory/drizly/
