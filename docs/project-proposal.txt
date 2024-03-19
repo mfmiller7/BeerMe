@@ -13,7 +13,7 @@ Beer Rating App
   - Beer database for all beers and their descriptions
   - User database to store beers they have tried, reviewed, and added to wishlist
 * APIs:
-  - Beer api - https://sampleapis.com/api-list/beers, https://openbeer.github.io/, https://punkapi.com/documentation/v2
+  - Beer api - https://openbeerdb.com/
   - Google maps 
   - Camera api
   - Drizly api - https://rapidapi.com/blog/directory/drizly/
