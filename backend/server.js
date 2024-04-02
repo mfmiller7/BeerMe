@@ -14,7 +14,7 @@ mongoose
     .catch((err) => console.error("Could not connect to MongoDB:", err));
 
 app.use(express.json());
-app.use("/", routes);
+//app.use("/", routes);
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
