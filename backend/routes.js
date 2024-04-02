@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 const { MongoClient } = require('mongodb');
 
-const rapidAPIKey = '0d888e178emsh82e4c56e11c9794p1bd890jsn20c492706bfa';
+const rapidAPIKey = '44000b90famshea255d0d4631716p1ea7fbjsn362c30e06221';
 
 const countries = ['belgium', 'czech', 'denmark', 'finland', 'ireland', 'italy', 'luxembourg', 'malta', 'norway', 'poland', 'portugal', 'spain', 'sweden', 'switzerland'];
 
@@ -18,8 +18,8 @@ const fetchBeerData = async (country) => {
 
         // Assuming response.data is an array of beer objects
         return response.data.map(beer => ({
-            abv: beer.abv,
-            title: beer.name,
+            abv: beer.alchool,
+            title: beer.title,
             description: beer.description
         }));
     } catch (error) {
@@ -29,11 +29,11 @@ const fetchBeerData = async (country) => {
 };
 
 const saveBeerToMongoDB = async (country, beers) => {
-    const client = new MongoClient('mongodb://localhost:27017', { useNewUrlParser: true, useUnifiedTopology: true });
+    const client = new MongoClient('mongodb+srv://mfmiller:vail2014@cluster0.dyyqsmf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 
     try {
         await client.connect();
-        const database = client.db('beerDatabase');
+        const database = client.db('BeerMe');
         const collection = database.collection(country);
 
         const result = await collection.insertMany(beers);
