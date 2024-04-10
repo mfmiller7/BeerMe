@@ -32,21 +32,13 @@ export default function Belgium() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://beers-list.p.rapidapi.com/beers/belgium', {
-                    method: 'GET',
-                    headers: {
-                        'X-RapidAPI-Key': '0d888e178emsh82e4c56e11c9794p1bd890jsn20c492706bfa',
-                        'X-RapidAPI-Host': 'beers-list.p.rapidapi.com'
-                    }
-                });
-                const responseData = await response.json();
-                setData(responseData);
-                console.log('Data fetched successfully:', responseData);
+                const response = await axios.get('http://localhost:3000/belgium');
+                setData(response.data);
+                console.log(response.data);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching beer:', error);
             }
         };
-
         fetchData();
     }, []);
 
