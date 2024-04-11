@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from "styled-components";
 import RateBeer from "../RateBeer.jsx";
+import axios from "axios";
 
 const StyledHeader=styled.h1`
     border-bottom: 2px solid #333;
@@ -28,43 +29,49 @@ const StyledDiv2=styled.button`
 
 export default function Belgium() {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/belgium');
+                const response = await axios.get('http://localhost:3000/beers/belgium');
                 setData(response.data);
                 console.log(response.data);
             } catch (error) {
                 console.error('Error fetching beer:', error);
+            } finally {
+                setLoading(false);
             }
         };
-        fetchData();
+        fetchData()
+            .then(()=>console.log("Everything is good :)"))
+            .catch(()=>console.log("Something went wrong :("))
     }, []);
 
-    const [rateBeer, setRateBeer] = useState('none')
+    const [rateBeer, setRateBeer] = useState('none');
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <>
             { rateBeer === 'none' && <StyledHeader>Belgian Beers</StyledHeader>}
             <StyledDiv>
-                {data.map((beer)=>
-                        (
-                            <>
-                                { rateBeer === 'none' &&
-                                    <StyledDiv2 onClick={() => setRateBeer(beer.title)} key={beer.id}>
-                                        <h3><u>{beer.title}</u></h3>
-                                        <p>Abv: {beer.abv}%</p>
-                                        <p>{beer.description}</p>
-                                    </StyledDiv2>
-                                }
-                            </>
-                        )
-                    )
-                }
+                {data.map((beer) => (
+                    <React.Fragment key={beer.id}>
+                        {rateBeer === 'none' && (
+                            <StyledDiv2 onClick={() => setRateBeer(beer.title)}>
+                                <h3><u>{beer.title}</u></h3>
+                                <p>Abv: {beer.abv}%</p>
+                                <p>{beer.description}</p>
+                            </StyledDiv2>
+                        )}
+                    </React.Fragment>
+                ))}
             </StyledDiv>
             <div>
-                { rateBeer !== 'none' && <RateBeer beer={rateBeer}/> }
+                {rateBeer !== 'none' && <RateBeer beer={rateBeer}/>}
             </div>
         </>
     );
