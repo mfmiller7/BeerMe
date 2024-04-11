@@ -22,7 +22,6 @@ export default function Home() {
             <StyledHeader>Home Page</StyledHeader>
             <h2>Already have an account?</h2>
             <StyledButton>Log in</StyledButton>
-
         </>
     )
 }

@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
 import styled from "styled-components";
-import RateBeer from "../RateBeer.jsx";
+import RateBeer from "./RateBeer.jsx";
+import axios from "axios";
 
 const StyledHeader=styled.h1`
     border-bottom: 2px solid #333;
+    text-transform: capitalize;
 `
+
 const StyledDiv = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     @media screen and (min-width: 1250px) {
         grid-template-columns: repeat(3, 1fr);
     }
-    gap: 20px; /* Gap between each grid item */
+    gap: 20px;
     background-color: lightgrey;
 `
 const StyledDiv2=styled.button`
@@ -25,44 +28,36 @@ const StyledDiv2=styled.button`
         border: 2px solid lightgrey;
     }
 `
-export default function Norway() {
-    const [data, setData] = useState([]);
+export default function Country( {country} ) {
+    const [beer, setBeer] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchBeers = async () => {
             try {
-                const response = await fetch('https://beers-list.p.rapidapi.com/beers/norway', {
-                    method: 'GET',
-                    headers: {
-                        'X-RapidAPI-Key': '0d888e178emsh82e4c56e11c9794p1bd890jsn20c492706bfa',
-                        'X-RapidAPI-Host': 'beers-list.p.rapidapi.com'
-                    }
-                });
-                const responseData = await response.json();
-                setData(responseData);
-                console.log('Data fetched successfully:', responseData);
+                const response = await axios.get(`http://localhost:3000/beers/${country}`);
+                setBeer(response.data);
+                console.log(response.data);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching beers:', error);
             }
         };
-
-        fetchData();
+        fetchBeers();
     }, []);
 
     const [rateBeer, setRateBeer] = useState('none')
 
     return (
         <>
-            { rateBeer === 'none' && <StyledHeader>Norwegian Beers</StyledHeader>}
+            { rateBeer === 'none' && <StyledHeader>{country}</StyledHeader>}
             <StyledDiv>
                 {
-                    data.map((beer)=>
+                    beer.map((beer)=>
                         (
                             <>
                                 { rateBeer === 'none' &&
                                     <StyledDiv2 onClick={() => setRateBeer(beer.title)} key={beer.id}>
                                         <h3><u>{beer.title}</u></h3>
-                                        <p>Abv: {beer.alchool}</p>
+                                        <p>Abv: {beer.abv}</p>
                                         <p>{beer.description}</p>
                                     </StyledDiv2>
                                 }
