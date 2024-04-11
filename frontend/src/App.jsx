@@ -1,18 +1,4 @@
-import Belgium from "./pages/countries/Belgium.jsx";
-import Czech from "./pages/countries/Czech.jsx";
-import Denmark from "./pages/countries/Denmark.jsx";
-import Finland from "./pages/countries/Finland.jsx";
-import Ireland from "./pages/countries/Ireland.jsx";
-import Italy from "./pages/countries/Italy.jsx";
-import Luxembourg from "./pages/countries/Luxembourg.jsx";
-import Malta from "./pages/countries/Malta.jsx";
-import Norway from "./pages/countries/Norway.jsx";
-import Poland from "./pages/countries/Poland.jsx";
-import Portugal from "./pages/countries/Portugal.jsx";
-import Spain from "./pages/countries/Spain.jsx";
-import Sweden from "./pages/countries/Sweden.jsx";
-import Switzerland from "./pages/countries/Switzerland.jsx";
-
+import Country from "./pages/Country.jsx";
 import Navigation from "./components/Navigation.jsx";
 import Header from './components/Header.jsx';
 import Home from './pages/Home.jsx';
@@ -43,20 +29,20 @@ function Root() {
             <Header />
             <Navigation/>
             <Routes>
-                <Route path={'/belgium/*'} element={<Belgium/>}/>
-                <Route path={'/czech/*'} element={<Czech/>}/>
-                <Route path={'/denmark/*'} element={<Denmark/>}/>
-                <Route path={'/finland/*'} element={<Finland/>}/>
-                <Route path={'/ireland/*'} element={<Ireland/>}/>
-                <Route path={'/italy/*'} element={<Italy/>}/>
-                <Route path={'/luxembourg/*'} element={<Luxembourg/>}/>
-                <Route path={'/malta/*'} element={<Malta/>}/>
-                <Route path={'/norway/*'} element={<Norway/>}/>
-                <Route path={'/poland/*'} element={<Poland/>}/>
-                <Route path={'/portugal/*'} element={<Portugal/>}/>
-                <Route path={'/spain/*'} element={<Spain/>}/>
-                <Route path={'/sweden/*'} element={<Sweden/>}/>
-                <Route path={'/switzerland/*'} element={<Switzerland/>}/>
+                <Route path={'/belgium/*'} element={<Country country={'belgium'}/>}/>
+                <Route path={'/czech/*'} element={<Country country={'czech'}/>}/>
+                <Route path={'/denmark/*'} element={<Country country={'denmark'}/>}/>
+                <Route path={'/finland/*'} element={<Country country={'finland'}/>}/>
+                <Route path={'/ireland/*'} element={<Country country={'ireland'}/>}/>
+                <Route path={'/italy/*'} element={<Country country={'italy'}/>}/>
+                <Route path={'/luxembourg/*'} element={<Country country={'luxembourg'}/>}/>
+                <Route path={'/malta/*'} element={<Country country={'malta'}/>}/>
+                <Route path={'/norway/*'} element={<Country country={'norway'}/>}/>
+                <Route path={'/poland/*'} element={<Country country={'poland'}/>}/>
+                <Route path={'/portugal/*'} element={<Country country={'portugal'}/>}/>
+                <Route path={'/spain/*'} element={<Country country={'spain'}/>}/>
+                <Route path={'/sweden/*'} element={<Country country={'sweden'}/>}/>
+                <Route path={'/switzerland/*'} element={<Country country={'switzerland'}/>}/>
             </Routes>
             {location.pathname === '/' && <Home />}
             <BottomNav/>
