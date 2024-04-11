@@ -34,18 +34,16 @@ export default function Belgium() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/beers/belgium');
+                const response = await axios.get('http://localhost:3000/beers/belgium'); // Replace 'belgium' with the desired country
+                console.log('Data:', response.data);
                 setData(response.data);
-                console.log(response.data);
             } catch (error) {
                 console.error('Error fetching beer:', error);
             } finally {
                 setLoading(false);
             }
         };
-        fetchData()
-            .then(()=>console.log("Everything is good :)"))
-            .catch(()=>console.log("Something went wrong :("))
+        fetchData();
     }, []);
 
     const [rateBeer, setRateBeer] = useState('none');

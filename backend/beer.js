@@ -1,19 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
+const {MongoClient} = require("mongodb");
 
-const Beer = require("./models/Beer");
-
-router.get("/BeerMe/:country", async (req, res) => {
+router.get('/beers/:country', async (req, res) => {
     const country = req.params.country;
 
     try {
-        const BeerModel = mongoose.model(country, Beer.schema, country);
-        const beers = await BeerModel.find();
-        res.json(beers);
+        const client = new MongoClient(uri);
+        await client.connect();
+        const database = client.db("BeerMe");
+        const collection = database.collection(country);
+        const beers = await collection.find({}).toArray();
+        res.json(beers); // Send beers data as JSON response
     } catch (error) {
-        console.error("Error fetching beers:", error);
-        res.status(500).json({ error: "Could not fetch beers" });
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
     }
 });
 
