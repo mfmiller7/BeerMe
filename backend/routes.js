@@ -59,5 +59,3 @@ router.get('/', async (req, res) => {
         res.status(500).send('An error occurred while fetching and saving beer data.');
     }
 });
-
-module.exports = router;

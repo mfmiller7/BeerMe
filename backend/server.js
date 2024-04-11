@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config(); // If using dotenv for environment variables
 const routes = require("./routes");
+const beer = require("./beer");
 const cors = require("cors");
 
 const app = express();
@@ -15,6 +16,7 @@ mongoose
 
 app.use(express.json());
 //app.use("/", routes);
+app.use("/", beer);
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
