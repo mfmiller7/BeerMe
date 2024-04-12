@@ -2,11 +2,7 @@ import { useState, useEffect } from 'react';
 import styled from "styled-components";
 import RateBeer from "./RateBeer.jsx";
 import axios from "axios";
-
-const StyledHeader=styled.h1`
-    border-bottom: 2px solid #333;
-    text-transform: capitalize;
-`
+import PropTypes from "prop-types";
 
 const StyledDiv = styled.div`
     display: grid;
@@ -17,7 +13,7 @@ const StyledDiv = styled.div`
     gap: 20px;
     background-color: lightgrey;
 `
-const StyledDiv2=styled.button`
+const StyledButton=styled.button`
     border: 2px solid #333;
     padding: 1% 2%;
     cursor: pointer;
@@ -28,47 +24,48 @@ const StyledDiv2=styled.button`
         border: 2px solid lightgrey;
     }
 `
-export default function Country( {country} ) {
+export default function Country({ country }) {
     const [beer, setBeer] = useState([]);
+    const [rateBeer, setRateBeer] = useState(null);
 
     useEffect(() => {
         const fetchBeers = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/beers/${country}`);
                 setBeer(response.data);
-                console.log(response.data);
             } catch (error) {
                 console.error('Error fetching beers:', error);
             }
         };
         fetchBeers();
-    }, []);
+    }, [country]);
 
-    const [rateBeer, setRateBeer] = useState('none')
+    const handleCancel = () => {
+        setRateBeer(null);
+    };
 
     return (
         <>
-            { rateBeer === 'none' && <StyledHeader>{country}</StyledHeader>}
-            <StyledDiv>
-                {
-                    beer.map((beer)=>
-                        (
-                            <>
-                                { rateBeer === 'none' &&
-                                    <StyledDiv2 onClick={() => setRateBeer(beer.title)} key={beer.id}>
-                                        <h3><u>{beer.title}</u></h3>
-                                        <p>Abv: {beer.abv}</p>
-                                        <p>{beer.description}</p>
-                                    </StyledDiv2>
-                                }
-                            </>
-                        )
-                    )
-                }
-            </StyledDiv>
+            {rateBeer === null && <br />}
             <div>
-                { rateBeer !== 'none' && <RateBeer beer={rateBeer}/> }
+                {rateBeer === null ? (
+                    <StyledDiv>
+                        {beer.map((beer) => (
+                            <StyledButton key={beer.id} onClick={() => setRateBeer(beer.title)}>
+                                <h3><u>{beer.title}</u></h3>
+                                <p>Abv: {beer.abv}</p>
+                                <p>{beer.description}</p>
+                            </StyledButton>
+                        ))}
+                    </StyledDiv>
+                ) : (
+                    <RateBeer beer={rateBeer} onCancel={handleCancel} />
+                )}
             </div>
         </>
     );
 }
+
+Country.propTypes = {
+    country: PropTypes.string.isRequired,
+};
