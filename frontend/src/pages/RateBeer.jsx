@@ -5,7 +5,7 @@ const StyledHeader=styled.h1`
     border-bottom: 2px solid #333;
 `
 
-const StyledButton1=styled.button`
+const StyledCancelButton=styled.button`
     border: 2px solid #333;
     margin: 0 1% 1% 0;
     padding: 1% 2%;
@@ -19,7 +19,7 @@ const StyledButton1=styled.button`
         border: 2px solid lightgrey;
 `
 
-const StyledButton2=styled.button`
+const StyledSaveButton=styled.button`
     border: 2px solid #333;
     margin: 0 0 1% 0;
     padding: 1% 2%;
@@ -62,11 +62,15 @@ const StyledText=styled.textarea`
     font-size: calc(5px + 1.5vmin);
 `;
 
-export default function RateBeer({beer}) {
-    return(
+export default function RateBeer({ beer, onCancel }) {
+    const handleCancel = () => {
+        onCancel();
+    };
+
+    return (
         <>
             <StyledHeader>{beer}</StyledHeader>
-            <Label for="rating">Rating:</Label>
+            <Label htmlFor="rating">Rating:</Label>
             <StyledSelect name="rating">
                 <option value={1}>1</option>
                 <option value={2}>2</option>
@@ -75,8 +79,9 @@ export default function RateBeer({beer}) {
                 <option value={5}>5</option>
             </StyledSelect>
             <Label>What did you like or dislike about {beer}?</Label>
-            <StyledText placeholder="Comments..."/>
-            <StyledButton1>Cancel</StyledButton1><StyledButton2>Save</StyledButton2>
+            <StyledText placeholder="Comments..." />
+            <StyledCancelButton onClick={handleCancel}>Cancel</StyledCancelButton>
+            <StyledSaveButton>Save</StyledSaveButton>
         </>
     );
 }
