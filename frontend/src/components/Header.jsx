@@ -13,7 +13,7 @@ const HeaderWrapper = styled.div`
 export default function Header() {
     return (
         <HeaderWrapper>
-            <h1>European Beers</h1>
+            <h1>BEERS</h1>
         </HeaderWrapper>
     );
 }
