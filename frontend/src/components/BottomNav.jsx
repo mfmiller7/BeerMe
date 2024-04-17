@@ -37,8 +37,8 @@ export default function BottomNav() {
         <>
             <StyledNav>
                 <ul>
-                    <li><NavLink to={'/home'}>Home</NavLink></li>
-                    <li><NavLink to={'/user-beers'}>My Beers</NavLink></li>
+                    <li><NavLink to={'/home'}>HOME</NavLink></li>
+                    <li><NavLink to={'/user-beers'}>MY BEERS</NavLink></li>
                 </ul>
             </StyledNav>
         </>
