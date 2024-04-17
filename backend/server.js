@@ -1,9 +1,10 @@
 const { MongoClient } = require('mongodb');
 const express = require('express');
 const beer = require("./beer");
-const oauth = require("./oauth");
+
 const app = express();
 const port = 3000;
+
 async function main(){
     const uri = "mongodb+srv://mfmiller:vail2014@cluster0.dyyqsmf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     const client = new MongoClient(uri);
@@ -19,8 +20,9 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
 app.use("/", beer);
-//app.use("/", oauth);
+
 const fetch = require('node-fetch');
 app.post('/api/auth/google', (req, res) => {
   const { code } = req.body;
@@ -28,7 +30,6 @@ app.post('/api/auth/google', (req, res) => {
   const client_secret = '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';
   const redirect_uri = 'http://localhost:3000/api/auth/google';
   const grant_type = 'authorization_code';
-
   fetch('<https://oauth2.googleapis.com/token>', {
     method: 'POST',
     headers: {
