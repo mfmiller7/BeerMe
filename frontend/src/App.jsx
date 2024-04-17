@@ -3,6 +3,7 @@ import Navigation from "./components/Navigation.jsx";
 import Header from './components/Header.jsx';
 import Home from './pages/Home.jsx';
 import User from "./pages/User.jsx";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
@@ -38,7 +39,7 @@ function Root() {
                 {countries.map(country => (
                     <Route key={country} path={`/${country}/*`} element={<Country country={country} />} />
                 ))}
-                <Route path="/" element={<Home />} />
+                {/* <Route path="/" element={<Home />} /> */}
                 <Route path="/home/*" element={<Home />} />
                 <Route path="/user-beers/*" element={<User />} />
             </Routes>
@@ -49,8 +50,11 @@ function Root() {
 
 export default function App() {
     return (
-        <Router>
-            <Root />
-        </Router>
+        // <GoogleOAuthProvider clientId="85119275849-lnbri26vmvvihfc2qelr5cgp83eil3dq.apps.googleusercontent.com">
+            <Router>
+                <Root />
+            </Router>
+        // </GoogleOAuthProvider>
     );
 }
+

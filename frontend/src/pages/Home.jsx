@@ -15,7 +15,10 @@ const StyledButton=styled.button`
         background-color: #333;
         border-radius: 10px;
         border: 2px solid lightgrey;
+
+
 `
+
 export default function Home() {
     return (
         <>
