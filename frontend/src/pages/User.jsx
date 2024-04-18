@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
 import styled from 'styled-components';
+import axios from "axios";
 
 const GoogleLogo = () => (
     <svg
@@ -63,59 +64,43 @@ const StyledHeader=styled.h1`
 
 export default function User() {
     const googleLogin = useGoogleLogin({
-        onSuccess: (codeResponse) => {
-            handleLoginSuccess(codeResponse)
-        },
-        //     // Send the authorization code to the backend server
-        //     fetch('/api/auth/google', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify({ code: codeResponse.code }),
-        //     })
-        //         .then(response => response.json())
-        //         .then(data => {
-        //             console.log('Backend response:', data);
-        //         })
-        //         .catch(error => {
-        //             console.error('Error:', error);
-        //         });
-        // },
-        // onError: () => {
-        //     // Handle login errors here
-        //     console.error('Google login failed');
-        // },
         flow: 'auth-code',
+        onSuccess: async (codeResponse) => {
+            console.log(codeResponse);
+            const tokens = await axios.post(
+                'http://localhost:3000/auth/google', {
+                    code: codeResponse.code,
+                });
+            handleLoginSuccess(tokens);
+            console.log(tokens);
+        },
+        onError: errorResponse => console.log(errorResponse),
     });
 
     const [user, setUser] = useState(null);
-
     const handleLoginSuccess = (tokens) => {
-        // Assuming tokens contain user details and the access token
         setUser({
             accessToken: tokens.access_token,
             refreshToken: tokens.refresh_token,
-            profile: tokens.profile, // User profile information
+            profile: tokens.id_token,
         });
-
-        // Optionally, you might want to store the access token in local storage for persistence
-        localStorage.setItem('accessToken', tokens.access_token);
     };
 
     return (
-        <StyledDiv>
+        <>
             {user ? (
                 <>
-                    <StyledHeader>{user.profile}'s Rated Beers</StyledHeader>
-                    {/* Pull beers they have rated from user db */}
+                    <StyledHeader>Your Rated Beers</StyledHeader>
+                    {/* Pull beers they have rated from user db, using id_token?? */}
                 </>
             ) : (
-                <GoogleButton onClick={() => googleLogin()}>
-                    <GoogleLogo />
-                    Sign in with Google
-                </GoogleButton>
+                <StyledDiv>
+                    <GoogleButton onClick={() => googleLogin()}>
+                        <GoogleLogo />
+                        Sign in with Google
+                    </GoogleButton>
+                </StyledDiv>
             )}
-        </StyledDiv>
+        </>
     );
 }

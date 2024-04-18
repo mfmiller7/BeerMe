@@ -1,7 +1,7 @@
 # Beer Rating App
 ### To Do:
 * Find a second api to use: upload to Mongo db and connect to frontend
-* Figure out connecting user db to OAuth sign in ([resource](https://www.dhiwise.com/post/react-google-oauth-the-key-to-secure-and-quick-logins))
+* Figure out connecting user db to user from sign in
 * Connect rate beer form to mongo db to save data to specific user profile
 
 ## How to run:

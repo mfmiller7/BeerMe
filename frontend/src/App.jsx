@@ -47,9 +47,9 @@ function Root() {
 
 export default function App() {
     return (
-        <GoogleOAuthProvider clientId="85119275849-lnbri26vmvvihfc2qelr5cgp83eil3dq.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId="1082165952674-ed5f9jero370hi4jc7ep877hn3g24q3v.apps.googleusercontent.com">
             <Router>
-                <Root />
+                <Root/>
             </Router>
         </GoogleOAuthProvider>
     );
