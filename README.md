@@ -8,11 +8,10 @@
 Clone repo:
 ```
 $ git clone git@github.com:mfmiller7/beer.git
-$ cd beer
 ```
 Start the server:
 ```
-$ cd backend
+$ cd beer/backend
 $ node server.js
 ```
 In a new tab, run the frontend:
