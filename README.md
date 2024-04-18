@@ -13,8 +13,7 @@ node server.js
 ```
 In a new tab, run the frontend
 ```
-cd ..
-cd frontend
+cd beer/frontend
 npm i @react-oauth/google
 npm run dev
 ```
