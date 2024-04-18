@@ -15,11 +15,9 @@ Start the server:
 $ cd backend
 $ node server.js
 ```
-Run the frontend:
+In a new tab, run the frontend:
 ```
-$ cd backend
-$ node server.js
-$ cd frontend
+$ cd beer/frontend
 $ rm -r node-modules
 $ npm install
 $ npm run dev
