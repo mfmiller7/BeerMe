@@ -1,6 +1,8 @@
-import React from 'react';
+// currently just doing this in User page, might want this though
+import React, {useState} from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
 import styled from 'styled-components';
+import User from "../pages/User.jsx";
 
 const GoogleLogo = () => (
     <svg
@@ -82,12 +84,30 @@ export default function SignIn() {
     flow: 'auth-code',
   });
 
+  const [user, setUser] = useState(null);
+
+  const handleLoginSuccess = (tokens) => {
+    // Assuming tokens contain user details and the access token
+    setUser({
+      accessToken: 1234,//tokens.access_token,
+      refreshToken: 1234,//tokens.refresh_token,
+      profile: MargoMiller,//tokens.profile, // User profile information
+    });
+
+    // Optionally, you might want to store the access token in local storage for persistence
+    localStorage.setItem('accessToken', tokens.access_token);
+  };
+
   return (
     <StyledDiv>
-      <GoogleButton onClick={() => googleLogin()}>
-        <GoogleLogo/>
-        Sign in with Google
-      </GoogleButton>
+      {user ? (
+          <User profile={user.profile}/>
+      ) : (
+          <GoogleButton onClick={() => googleLogin()}>
+            <GoogleLogo/>
+            Sign in with Google
+          </GoogleButton>
+      )}
     </StyledDiv>
   );
 }

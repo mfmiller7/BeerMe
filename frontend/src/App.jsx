@@ -7,7 +7,6 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import BottomNav from "./components/BottomNav.jsx";
-import SignIn from "./components/SignIn.jsx";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -39,9 +38,7 @@ function Root() {
                 {countries.map(country => (
                     <Route key={country} path={`/${country}/*`} element={<Country country={country} />} />
                 ))}
-                <Route path="/" element={<SignIn />} />
-                <Route path="/login/*" element={<SignIn />} />
-                <Route path="/user/*" element={<User />} />
+                <Route path="/" element={<User />} />
             </Routes>
             <BottomNav />
         </>
@@ -57,4 +54,3 @@ export default function App() {
         </GoogleOAuthProvider>
     );
 }
-
