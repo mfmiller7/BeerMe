@@ -1,7 +1,5 @@
 import React from 'react';
-import { useGoogleLogin } from '@react-oauth/google';
 import styled from 'styled-components';
-import axios from "axios";
 
 const GoogleLogo = () => (
     <svg
@@ -31,31 +29,26 @@ const GoogleLogo = () => (
 
 const GoogleButton = styled.button`
     display: flex;
-    margin: auto;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    border: 2px solid #333;
     padding: 1% 2%;
     color: lightgrey;
-    background-color: #333;
-  &:hover {
-    color: lightgrey;
     background-color: black;
+    border-radius: 10px;
     border: 2px solid black;
-  }
+    &:hover {
+        color: darkseagreen;
+    }
   svg {
     margin-right: 10px;
   }
 `;
 
 const StyledDiv=styled.div`
-    width: 90%;
-    height: 50%;
-    padding: 5%;
+    width: 100%;
 `;
 
 export default function LogOut(){

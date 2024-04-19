@@ -7,7 +7,7 @@ const StyledNav=styled.nav`
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: #333;
+        background-color: black;
         width: 100%;
     }
     li {
@@ -21,12 +21,12 @@ const StyledNav=styled.nav`
         text-decoration: none;
     }
     li a:hover {
-        background-color: black;
-        color: lightgrey;
+        background-color: darkseagreen;
+        color: black;
     }
     .active {
-        background-color: lightgrey;
-        color: black;
+        background-color: #333;
+        color: lightgrey;
     }
 `
 

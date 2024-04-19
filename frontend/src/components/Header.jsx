@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const HeaderWrapper = styled.div`
-    background-color: #333;
+    background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +13,7 @@ const HeaderWrapper = styled.div`
 export default function Header() {
     return (
         <HeaderWrapper>
-            <h1>BEERS</h1>
+            <h1>BEER ME</h1>
         </HeaderWrapper>
     );
 }

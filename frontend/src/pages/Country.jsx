@@ -11,17 +11,19 @@ const StyledDiv = styled.div`
         grid-template-columns: repeat(3, 1fr);
     }
     gap: 20px;
-    background-color: lightgrey;
 `
 const StyledButton=styled.button`
-    border: 2px solid #333;
     padding: 1% 2%;
     cursor: pointer;
+    color: lightgrey;
+    background-color: #333;
+    border-radius: 10px;
+    border: 2px solid lightgrey;
     &:hover{
-        color: lightgrey;
-        background-color: #333;
+        color: black;
+        background-color: lightgoldenrodyellow;
         border-radius: 10px;
-        border: 2px solid lightgrey;
+        border: 2px solid #333;
     }
 `
 export default function Country({ country }) {

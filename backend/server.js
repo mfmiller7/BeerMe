@@ -48,9 +48,22 @@ app.post('/auth/google/refresh-token', async (req, res) => {
         clientSecret,
         req.body.refreshToken,
     );
-    const { credentials } = await user.refreshAccessToken(); // obtain new tokens
+    const { credentials } = await user.refreshAccessToken();
     res.json(credentials);
 })
+
+// save rated beers
+app.use(express.json());
+app.post('/beers/rated', (req, res) => {
+    const beerData = req.body;
+    console.log(`Beer data received:`, beerData);
+    res.json(beerData);
+});
+
+// get rated beers
+app.get('/beers/rated', (req, res) => {
+    res.json();
+});
 
 // for server
 app.get("/", (req, res) => {

@@ -4,35 +4,37 @@ import SignIn from "../components/SignIn.jsx";
 import React, {useState} from "react";
 
 const StyledHeader=styled.h1`
-    border-bottom: 2px solid #333;
+    
 `
 
 const StyledCancelButton=styled.button`
-    border: 2px solid #333;
-    margin: 0 1% 1% 0;
     padding: 1% 2%;
-    float: left;
     cursor: pointer;
-    border-radius: 4px;
+    color: black;
+    background-color: lightgrey;
+    border-radius: 10px;
+    border: 2px solid #333;
     &:hover{
-        color: lightgrey;
-        background-color: #333;
+        color: white;
+        background-color: black;
         border-radius: 10px;
-        border: 2px solid lightgrey;
+        border: 2px solid #333;
+    }
 `
 
 const StyledSaveButton=styled.button`
-    border: 2px solid #333;
-    margin: 0 0 1% 0;
     padding: 1% 2%;
-    float: left;
     cursor: pointer;
-    border-radius: 4px;
+    color: black;
+    background-color: lightgrey;
+    border-radius: 10px;
+    border: 2px solid #333;
     &:hover{
-        color: lightgrey;
-        background-color: #333;
+        color: white;
+        background-color: black;
         border-radius: 10px;
-        border: 2px solid lightgrey;
+        border: 2px solid #333;
+    }
 `
 
 const Label = styled.label`
@@ -45,7 +47,7 @@ const StyledSelect=styled.select`
     padding: 0.5% 2%;
     margin: 1% 0;
     border-radius: 4px;
-    background-color: #f1f1f1;
+    background-color: lightgrey;
     cursor: pointer;
 `;
 
@@ -57,7 +59,7 @@ const StyledText=styled.textarea`
     width: 100%;
     height: 150px;
     box-sizing: border-box;
-    background-color: #f1f1f1;
+    background-color: lightgrey;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -66,7 +68,7 @@ const StyledText=styled.textarea`
 
 export default function RateBeer({ beer, onCancel }) {
 
-    const [rating, setRating] = useState('');
+    const [rating, setRating] = useState('1');
     const [comments, setComments] = useState('');
 
     const handleCancel = () => {
@@ -75,21 +77,19 @@ export default function RateBeer({ beer, onCancel }) {
 
     const handleSave = () => {
         const data = {
-            name: {beer},
+            name: beer,
             rating: rating,
             comments: comments
         };
-        // sendDataToAPI(data)
-        //     .then(() => {
-        //         setName('');
-        //         setRating('');
-        //         setComments('');
-        //         onCancel();
-        //     })
-        //     .catch(error => {
-        //         console.error('Error saving data:', error);
-        //     });
-        onCancel();
+        sendDataToAPI(data)
+            .then(() => {
+                setRating('');
+                setComments('');
+                onCancel();
+            })
+            .catch(error => {
+                console.error('Error saving data:', error);
+            });
     }
 
     const user = localStorage.getItem('user');
@@ -114,7 +114,6 @@ export default function RateBeer({ beer, onCancel }) {
                 </>
             ) : (
                 <>
-                    <StyledHeader>You must sign in to rate a beer...</StyledHeader>
                     <SignIn/>
                 </>
             )}
@@ -122,22 +121,22 @@ export default function RateBeer({ beer, onCancel }) {
     );
 }
 
-// const sendDataToAPI = async (data) => {
-//     try {
-//         const response = await fetch('your-api-endpoint', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify(data)
-//         });
-//         if (!response.ok) {
-//             throw new Error('Failed to save data to the API');
-//         }
-//     } catch (error) {
-//         throw new Error(error.message);
-//     }
-// };
+const sendDataToAPI = async (data) => {
+    try {
+        const response = await fetch('http://localhost:3000/beers/rated', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        if (!response.ok) {
+            throw new Error('Failed to save data to the API');
+        }
+    } catch (error) {
+        throw new Error(error.message);
+    }
+};
 
 RateBeer.propTypes = {
     beer: PropTypes.string.isRequired,

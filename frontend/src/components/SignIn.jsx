@@ -30,22 +30,19 @@ const GoogleLogo = () => (
 );
 
 const GoogleButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  margin: auto;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  border: 2px solid #333;
-  padding: 1% 2%;
-  color: lightgrey;
-  background-color: #333;
-  &:hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 1% 2%;
     color: lightgrey;
     background-color: black;
+    border-radius: 10px;
     border: 2px solid black;
+  &:hover {
+      color: darkseagreen;
   }
   svg {
     margin-right: 10px;
@@ -53,9 +50,8 @@ const GoogleButton = styled.button`
 `;
 
 const StyledDiv=styled.div`
-    width: 90%;
-    height: 50%;
-    padding: 5%;
+    width: 100%;
+    padding-top: 3%;
 `;
 
 export default function SignIn() {

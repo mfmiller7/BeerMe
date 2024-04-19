@@ -7,7 +7,7 @@ const StyledNav=styled.nav`
         margin: 0 2%;
         padding: 0;
         overflow: hidden;
-        background-color: #333;
+        background-color: black;
         width: 96%;
         position: fixed;
         bottom: 0;
@@ -18,18 +18,18 @@ const StyledNav=styled.nav`
     }
     li a {
         display: block;
-        color: lightgrey;
+        color: white;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
     }
     li a:hover {
-        background-color: black;
-        color: lightgrey;
+        background-color: lightblue;
+        color: black;
     }
     .active {
-        background-color: lightgrey;
-        color: black;
+        background-color: #333;
+        color: lightgrey;
     }
 `
 export default function BottomNav() {
