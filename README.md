@@ -1,8 +1,7 @@
 # Beer Rating App
 ### To Do:
-* Find a second api to use: upload to Mongo db and connect to frontend
-* Figure out connecting user db to user from sign in
-* Connect rate beer form to mongo db to save data to specific user profile
+* Find a second api to use
+* Send rate beer data to API and pull from API on user page
 
 ## How to run:
 In your terminal, clone repo and start the server
