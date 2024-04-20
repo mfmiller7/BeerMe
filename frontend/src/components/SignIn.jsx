@@ -7,8 +7,8 @@ const GoogleLogo = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 48 48"
-        width="48px"
-        height="48px"
+        width="30px"
+        height="30px"
     >
         <path
             fill="#FFC107"
@@ -30,28 +30,27 @@ const GoogleLogo = () => (
 );
 
 const GoogleButton = styled.button`
-    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
-    padding: 1% 2%;
-    color: lightgrey;
+    float: right;
+    padding: 10px 14px;
     background-color: black;
-    border-radius: 10px;
-    border: 2px solid black;
-  &:hover {
-      color: darkseagreen;
-  }
-  svg {
-    margin-right: 10px;
-  }
+    color: lightgrey;
+    text-align: center;
+    text-decoration: none;
+    border: black solid 2px;
+    &:hover {
+        background-color: #333;
+        border: #333 solid 2px;
+    }
+    svg {
+        margin-right: 10px;
+    }
 `;
 
 const StyledDiv=styled.div`
     width: 100%;
-    padding-top: 3%;
 `;
 
 export default function SignIn() {
@@ -78,7 +77,7 @@ export default function SignIn() {
             <StyledDiv>
                 <GoogleButton onClick={() => googleLogin()}>
                     <GoogleLogo />
-                    Sign in with Google
+                    SIGN IN
                 </GoogleButton>
             </StyledDiv>
         </>

@@ -1,5 +1,8 @@
 import {NavLink} from "react-router-dom";
 import styled from 'styled-components';
+import SignIn from "./SignIn.jsx";
+import React from "react";
+import LogOut from "./LogOut.jsx";
 
 const StyledNav=styled.nav`
     ul {
@@ -18,14 +21,14 @@ const StyledNav=styled.nav`
     }
     li a {
         display: block;
-        color: white;
+        color: lightgrey;
         text-align: center;
-        padding: 14px 16px;
+        padding: 19px 16px;
         text-decoration: none;
     }
     li a:hover {
-        background-color: lightblue;
-        color: black;
+        background-color: #333;
+        color: lightgrey;
     }
     .active {
         background-color: #333;
@@ -33,10 +36,20 @@ const StyledNav=styled.nav`
     }
 `
 export default function BottomNav() {
+    const user = localStorage.getItem('user');
     return (
         <>
             <StyledNav>
                 <ul>
+                    {user ? (
+                        <>
+                            <LogOut/>
+                        </>
+                    ) : (
+                        <>
+                            <SignIn/>
+                        </>
+                    )}
                     <li><NavLink to={'/'}>MY BEERS</NavLink></li>
                 </ul>
             </StyledNav>

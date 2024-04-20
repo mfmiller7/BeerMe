@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import SignIn from "../components/SignIn.jsx";
 import React, {useState} from "react";
 
 const StyledHeader=styled.h1`
@@ -57,6 +56,7 @@ const StyledText=styled.textarea`
     margin: 1% 0;
     border-radius: 4px;
     width: 100%;
+    max-width: 900px;
     height: 150px;
     box-sizing: border-box;
     background-color: lightgrey;
@@ -109,12 +109,13 @@ export default function RateBeer({ beer, onCancel }) {
                     </StyledSelect>
                     <Label>What did you like or dislike about {beer}?</Label>
                     <StyledText placeholder="Comments..." onChange={e => setComments(e.target.value)}/>
+                    <br></br>
                     <StyledCancelButton onClick={handleCancel}>Cancel</StyledCancelButton>
                     <StyledSaveButton onClick={handleSave}>Save</StyledSaveButton>
                 </>
             ) : (
                 <>
-                    <SignIn/>
+                    <StyledHeader>Sign in to rate {beer}</StyledHeader>
                 </>
             )}
         </>

@@ -21,8 +21,8 @@ const StyledNav=styled.nav`
         text-decoration: none;
     }
     li a:hover {
-        background-color: darkseagreen;
-        color: black;
+        background-color: #333;
+        color: lightgrey;
     }
     .active {
         background-color: #333;

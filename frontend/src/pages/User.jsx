@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import SignIn from "../components/SignIn.jsx";
-import LogOut from "../components/LogOut.jsx";
 
 const StyledHeader=styled.h1`
     
@@ -67,11 +65,10 @@ export default function User() {
                             </StyledDiv2>
                         ))}
                     </StyledDiv>
-                    <LogOut />
                 </>
             ) : (
                 <>
-                    <SignIn/>
+                    <StyledHeader>Sign in to view rated beers</StyledHeader>
                 </>
             )}
         </>

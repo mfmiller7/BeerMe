@@ -5,8 +5,8 @@ const GoogleLogo = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 48 48"
-        width="48px"
-        height="48px"
+        width="30px"
+        height="30px"
     >
         <path
             fill="#FFC107"
@@ -28,19 +28,19 @@ const GoogleLogo = () => (
 );
 
 const GoogleButton = styled.button`
-    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
-    padding: 1% 2%;
-    color: lightgrey;
+    float: right;
+    padding: 10px 14px;
     background-color: black;
-    border-radius: 10px;
-    border: 2px solid black;
+    color: lightgrey;
+    text-align: center;
+    text-decoration: none;
+    border: black solid 2px;
     &:hover {
-        color: darkseagreen;
+        background-color: #333;
+        border: #333 solid 2px;
     }
   svg {
     margin-right: 10px;
@@ -61,7 +61,7 @@ export default function LogOut(){
             <StyledDiv>
                 <GoogleButton onClick={handleLogout}>
                     <GoogleLogo />
-                    Logout
+                    LOGOUT
                 </GoogleButton>
             </StyledDiv>
         </>

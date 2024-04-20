@@ -21,7 +21,8 @@ const StyledButton=styled.button`
     border: 2px solid lightgrey;
     &:hover{
         color: black;
-        background-color: lightgoldenrodyellow;
+        background-image: url('/beer.png');
+        background-size: cover; 
         border-radius: 10px;
         border: 2px solid #333;
     }

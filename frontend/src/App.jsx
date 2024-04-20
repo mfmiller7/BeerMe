@@ -2,11 +2,11 @@ import Country from "./pages/Country.jsx";
 import Navigation from "./components/Navigation.jsx";
 import Header from './components/Header.jsx';
 import User from "./pages/User.jsx";
+import BottomNav from "./components/BottomNav.jsx";
 
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
-import BottomNav from "./components/BottomNav.jsx";
 
 const GlobalStyle = createGlobalStyle`
   body {
