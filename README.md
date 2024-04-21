@@ -1,7 +1,6 @@
 # Beer Rating App
 ### To Do:
 * Find a second api to use
-* Send rate beer data to API and pull from API on user page
 
 ## How to run:
 In your terminal, clone repo and start the server
