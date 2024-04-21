@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import React, {useState} from "react";
 import NoUser from "../components/NoUser.jsx";
 
@@ -68,7 +67,7 @@ const StyledText2=styled.textarea`
     font-size: calc(5px + 1.2vmin);
 `;
 
-export default function RateBeer({ beer, onCancel }) {
+export default function RateRandom({ onCancel }) {
     function getDate() {
         const today = new Date();
         const month = today.getMonth() + 1;
@@ -77,6 +76,7 @@ export default function RateBeer({ beer, onCancel }) {
         return `${month}/${date}/${year}`;
     }
 
+    const [beer, setBeer] = useState('');
     const [rating, setRating] = useState('1');
     const [comments, setComments] = useState('');
     const [name, setName] = useState('Anonymous');
@@ -99,6 +99,7 @@ export default function RateBeer({ beer, onCancel }) {
                 setRating('1');
                 setComments('');
                 setName('Anonymous');
+                setBeer('')
                 onCancel();
             })
             .catch(error => {
@@ -113,6 +114,7 @@ export default function RateBeer({ beer, onCancel }) {
             {user ? (
                 <>
                     <StyledHeader>{beer}</StyledHeader>
+                    <StyledText2 placeholder="Beer name" onChange={e => setBeer(e.target.value)}/>
                     <Label htmlFor="rating">Rating:</Label>
                     <StyledSelect name="rating" onChange={e => setRating(e.target.value)}>
                         <option value={1}>1</option>
@@ -152,8 +154,4 @@ const saveToMongoDB = async (data) => {
     } catch (error) {
         throw new Error(error.message);
     }
-};
-
-RateBeer.propTypes = {
-    beer: PropTypes.string.isRequired,
 };

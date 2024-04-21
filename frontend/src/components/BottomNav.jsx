@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
 import styled from 'styled-components';
-import SignIn from "./SignIn.jsx";
+import LogIn from "./LogIn.jsx";
 import React from "react";
 import LogOut from "./LogOut.jsx";
 
@@ -47,7 +47,7 @@ export default function BottomNav() {
                         </>
                     ) : (
                         <>
-                            <SignIn/>
+                            <LogIn/>
                         </>
                     )}
                     <li><NavLink to={'/'}>MY BEERS</NavLink></li>

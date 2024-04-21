@@ -54,16 +54,30 @@ app.post('/auth/google/refresh-token', async (req, res) => {
 
 // save rated beers
 app.use(express.json());
-app.post('/beers/rated', (req, res) => {
+app.post('/savenewrating', async (req, res) => {
     const beerData = req.body;
     console.log(`Beer data received:`, beerData);
-    res.json(beerData);
+    const saveBeerToMongoDB = async (beerData) => {
+        const client = new MongoClient('mongodb+srv://mfmiller:vail2014@cluster0.dyyqsmf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+
+        try {
+            await client.connect();
+            const database = client.db('Ratings');
+            const collection = database.collection('all');
+            await collection.insertOne(beerData);
+            console.log(`Inserted ${beerData} into MongoDB.`);
+        } catch (error) {
+            console.error(`Error saving rating to MongoDB: ${error.message}`);
+        } finally {
+            await client.close();
+        }
+    };
+    await saveBeerToMongoDB(beerData);
 });
 
 // get rated beers
-app.get('/beers/rated', (req, res) => {
-    res.json();
-});
+const ratings = require("./ratings");
+app.use("/", ratings);
 
 // for server
 app.get("/", (req, res) => {

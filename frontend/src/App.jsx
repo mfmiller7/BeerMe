@@ -1,7 +1,7 @@
 import Country from "./pages/Country.jsx";
 import Navigation from "./components/Navigation.jsx";
 import Header from './components/Header.jsx';
-import User from "./pages/User.jsx";
+import BeerRatings from "./pages/BeerRatings.jsx";
 import BottomNav from "./components/BottomNav.jsx";
 
 import { GoogleOAuthProvider } from '@react-oauth/google';
@@ -38,7 +38,7 @@ function Root() {
                 {countries.map(country => (
                     <Route key={country} path={`/${country}/*`} element={<Country country={country} />} />
                 ))}
-                <Route path="/" element={<User />} />
+                <Route path="/" element={<BeerRatings />} />
             </Routes>
             <BottomNav />
         </>

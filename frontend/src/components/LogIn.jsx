@@ -53,7 +53,7 @@ const StyledDiv=styled.div`
     width: 100%;
 `;
 
-export default function SignIn() {
+export default function LogIn() {
     const googleLogin = useGoogleLogin({
         flow: 'auth-code',
         onSuccess: async (codeResponse) => {
@@ -77,7 +77,7 @@ export default function SignIn() {
             <StyledDiv>
                 <GoogleButton onClick={() => googleLogin()}>
                     <GoogleLogo />
-                    SIGN IN
+                    LOGIN
                 </GoogleButton>
             </StyledDiv>
         </>

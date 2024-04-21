@@ -4,14 +4,14 @@ Beer Rating App
   - Allows user to review beers they have already tried
 * Potential implementations:
   - Locate specific beer nearby
-  - User uploads photos of beer
+  - BeerRatings uploads photos of beer
   - Add a beer if it's not already on the app 
   - Follow other users
   - Establishment specific profiles to upload their beers, rate their beers, etc
   - Within wishlist have google maps for nearby purchases/drizzly delivery
 * Database:
   - Beer database for all beers and their descriptions
-  - User database to store beers they have tried, reviewed, and added to wishlist
+  - BeerRatings database to store beers they have tried, reviewed, and added to wishlist
 * APIs:
   - Beer api - https://openbeerdb.com/
   - Google maps 
