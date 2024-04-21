@@ -53,7 +53,7 @@ const StyledText=styled.textarea`
 const StyledText2=styled.textarea`
     border: 2px solid #333;
     padding: 0.5%;
-    margin: 1% 0;
+    margin: auto;
     border-radius: 4px;
     width: 60%;
     max-width: 200px;
@@ -115,6 +115,8 @@ export default function RateRandom({ onCancel }) {
                 <>
                     <StyledHeader>{beer}</StyledHeader>
                     <StyledText2 placeholder="Beer name" onChange={e => setBeer(e.target.value)}/>
+                    <br></br>
+                    <StyledText2 placeholder="**Your name" onChange={e => setName(e.target.value)}/>
                     <Label htmlFor="rating">Rating:</Label>
                     <StyledSelect name="rating" onChange={e => setRating(e.target.value)}>
                         <option value={1}>1</option>
@@ -126,11 +128,9 @@ export default function RateRandom({ onCancel }) {
                     <Label>What did you like or dislike about {beer}?</Label>
                     <StyledText placeholder="Comments..." onChange={e => setComments(e.target.value)}/>
                     <br></br>
-                    <Label>Name you would like saved with this rating(feel free to leave blank):</Label>
-                    <StyledText2 placeholder="Your first name" onChange={e => setName(e.target.value)}/>
-                    <br></br>
                     <StyledButton onClick={handleCancel}>Cancel</StyledButton>
                     <StyledButton onClick={handleSave}>Save</StyledButton>
+                    <p>**leave blank for an anonymous rating</p>
                 </>
             ) : (
                 <NoUser/>

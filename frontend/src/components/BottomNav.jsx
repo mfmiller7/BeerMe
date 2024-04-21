@@ -50,7 +50,7 @@ export default function BottomNav() {
                             <LogIn/>
                         </>
                     )}
-                    <li><NavLink to={'/'}>MY BEERS</NavLink></li>
+                    <li><NavLink to={'/'}>RATINGS</NavLink></li>
                 </ul>
             </StyledNav>
         </>

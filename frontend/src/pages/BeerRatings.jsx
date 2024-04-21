@@ -30,13 +30,18 @@ const StyledButton=styled.button`
     color: black;
     background-color: lightskyblue;
     border-radius: 10px;
-    border: 2px solid lightgrey;
+    border: 2px solid #333;
     float: right;
+    font-size: calc(6px + 1vmin);
     &:hover{
         color: white;
         background-color: lightskyblue;
         cursor: pointer;
     }
+`
+
+const StyledA=styled.a`
+    color: lightskyblue;
 `
 
 export default function BeerRatings() {
@@ -48,7 +53,7 @@ export default function BeerRatings() {
         const fetchRatings = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/getallratings`);
-                setRatings(response.data);
+                setRatings(response.data.reverse());
             } catch (error) {
                 console.error('Error fetching beers:', error);
             }
@@ -68,7 +73,10 @@ export default function BeerRatings() {
                 <>
                     {rateRandom === null ? (
                         <>
-                            <StyledHeader>Rated Beers <StyledButton onClick={() => setRateRandom('yes')}>+</StyledButton></StyledHeader>
+                            <StyledHeader>Rated Beers <StyledButton
+                                onClick={() => setRateRandom('yes')}>+</StyledButton></StyledHeader>
+                            <h3>Browse all BeerMe user beer ratings below!</h3>
+                            <p>Want to rate a beer not in our selection? Click the '+' button to the right!</p>
                             <StyledDiv>
                                 {ratings.map(rating => (
                                     <StyledDiv2>
@@ -79,6 +87,16 @@ export default function BeerRatings() {
                                     </StyledDiv2>
                                 ))}
                             </StyledDiv>
+                            <p>
+                                Thanks to <StyledA href='https://rapidapi.com/user/andreafalzi'>Andrea
+                                Falzi</StyledA> for creating the <StyledA
+                                href='https://rapidapi.com/andreafalzi/api/beers-list/'>European
+                                Beers List API</StyledA>
+                            </p>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
                         </>
                     ) : (
                         <>
