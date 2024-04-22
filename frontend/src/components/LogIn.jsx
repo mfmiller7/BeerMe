@@ -70,6 +70,7 @@ export default function LogIn() {
 
     const handleLoginSuccess = (tokens) => {
         localStorage.setItem('user', tokens.access_token);
+        window.location.reload();
     };
 
     return (

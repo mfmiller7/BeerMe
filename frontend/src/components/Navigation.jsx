@@ -22,11 +22,9 @@ const StyledNav=styled.nav`
     }
     li a:hover {
         background-color: #333;
-        color: lightgrey;
     }
     .active {
         background-color: #333;
-        color: lightgrey;
     }
 `
 

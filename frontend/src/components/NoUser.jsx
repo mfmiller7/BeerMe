@@ -18,12 +18,11 @@ export default function NoUser(){
     return (
         <StyledDiv>
             <StyledHeader>Welcome to BeerMe!</StyledHeader>
-            <h3>Please login* to rate and view rated beers.</h3>
+            <h3>Please login to rate and view rated beers.</h3>
             <p>
                 Feel free to browse our selection without signing in,
                 just select a country above to get started!
             </p>
-            <p>*refresh page once you sign in</p>
         </StyledDiv>
     )
 }

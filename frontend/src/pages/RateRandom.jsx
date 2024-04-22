@@ -2,10 +2,6 @@ import styled from "styled-components";
 import React, {useState} from "react";
 import NoUser from "../components/NoUser.jsx";
 
-const StyledHeader=styled.h1`
-    
-`
-
 const StyledButton=styled.button`
     padding: 1% 2%;
     cursor: pointer;
@@ -56,7 +52,7 @@ const StyledText2=styled.textarea`
     margin: auto;
     border-radius: 4px;
     width: 60%;
-    max-width: 200px;
+    max-width: 500px;
     height: 35px;
     box-sizing: border-box;
     background-color: lightgrey;
@@ -100,11 +96,11 @@ export default function RateRandom({ onCancel }) {
                 setComments('');
                 setName('Anonymous');
                 setBeer('')
-                onCancel();
             })
             .catch(error => {
                 console.error('Error saving data:', error);
             });
+        onCancel();
     }
 
     const user = localStorage.getItem('user');
@@ -113,10 +109,10 @@ export default function RateRandom({ onCancel }) {
         <>
             {user ? (
                 <>
-                    <StyledHeader>{beer}</StyledHeader>
+                    <h1>{beer}</h1>
                     <StyledText2 placeholder="Beer name" onChange={e => setBeer(e.target.value)}/>
                     <br></br>
-                    <StyledText2 placeholder="**Your name" onChange={e => setName(e.target.value)}/>
+                    <StyledText2 placeholder="Your name (leave blank for an anonymous rating)" onChange={e => setName(e.target.value)}/>
                     <Label htmlFor="rating">Rating:</Label>
                     <StyledSelect name="rating" onChange={e => setRating(e.target.value)}>
                         <option value={1}>1</option>
@@ -130,7 +126,6 @@ export default function RateRandom({ onCancel }) {
                     <br></br>
                     <StyledButton onClick={handleCancel}>Cancel</StyledButton>
                     <StyledButton onClick={handleSave}>Save</StyledButton>
-                    <p>**leave blank for an anonymous rating</p>
                 </>
             ) : (
                 <NoUser/>

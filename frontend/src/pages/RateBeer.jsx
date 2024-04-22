@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 import React, {useState} from "react";
 import NoUser from "../components/NoUser.jsx";
 
-const StyledHeader=styled.h1`
-    
-`
-
 const StyledButton=styled.button`
     padding: 1% 2%;
     cursor: pointer;
@@ -57,7 +53,7 @@ const StyledText2=styled.textarea`
     margin: auto;
     border-radius: 4px;
     width: 60%;
-    max-width: 200px;
+    max-width: 500px;
     height: 35px;
     box-sizing: border-box;
     background-color: lightgrey;
@@ -99,11 +95,11 @@ export default function RateBeer({ beer, onCancel }) {
                 setRating('1');
                 setComments('');
                 setName('Anonymous');
-                onCancel();
             })
             .catch(error => {
                 console.error('Error saving data:', error);
             });
+        onCancel();
     }
 
     const user = localStorage.getItem('user');
@@ -112,8 +108,8 @@ export default function RateBeer({ beer, onCancel }) {
         <>
             {user ? (
                 <>
-                    <StyledHeader>{beer}</StyledHeader>
-                    <StyledText2 placeholder="**Your name" onChange={e => setName(e.target.value)}/>
+                    <h1>{beer}</h1>
+                    <StyledText2 placeholder="Your name (leave blank for an anonymous rating)" onChange={e => setName(e.target.value)}/>
                     <Label htmlFor="rating">Rating:</Label>
                     <StyledSelect name="rating" onChange={e => setRating(e.target.value)}>
                         <option value={1}>1</option>
@@ -127,7 +123,6 @@ export default function RateBeer({ beer, onCancel }) {
                     <br></br>
                     <StyledButton onClick={handleCancel}>Cancel</StyledButton>
                     <StyledButton onClick={handleSave}>Save</StyledButton>
-                    <p>**leave blank for an anonymous rating</p>
                 </>
             ) : (
                 <NoUser/>

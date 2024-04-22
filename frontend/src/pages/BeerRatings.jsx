@@ -4,10 +4,6 @@ import NoUser from "../components/NoUser.jsx";
 import axios from "axios";
 import RateRandom from "./RateRandom.jsx";
 
-const StyledHeader=styled.h1`
-    
-`
-
 const StyledDiv = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -73,8 +69,8 @@ export default function BeerRatings() {
                 <>
                     {rateRandom === null ? (
                         <>
-                            <StyledHeader>Rated Beers <StyledButton
-                                onClick={() => setRateRandom('yes')}>+</StyledButton></StyledHeader>
+                            <h1>Rated Beers <StyledButton
+                                onClick={() => setRateRandom('yes')}>+</StyledButton></h1>
                             <h3>Browse all BeerMe user beer ratings below!</h3>
                             <p>Want to rate a beer not in our selection? Click the '+' button to the right!</p>
                             <StyledDiv>

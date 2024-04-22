@@ -54,6 +54,7 @@ const StyledDiv=styled.div`
 export default function LogOut(){
     const handleLogout = () => {
         localStorage.removeItem('user');
+        window.location.reload();
     };
 
     return (
