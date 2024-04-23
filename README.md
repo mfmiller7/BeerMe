@@ -17,7 +17,6 @@ Navigate to the backend and install necessary packages:
 ```
 cd backend
 npm install
-npm i google-auth-library
 ```
 Start the server:
 ```
@@ -27,7 +26,6 @@ Open a new terminal tab or window, navigate to the frontend directory and instal
 ```
 cd frontend
 npm install
-npm i @react-oauth/google
 ```
 Run the frontend:
 ```
