@@ -3,22 +3,24 @@ import React, {useState} from "react";
 import NoUser from "../components/NoUser.jsx";
 
 const StyledButton=styled.button`
-    padding: 1% 2%;
-    cursor: pointer;
-    color: black;
-    background-color: lightskyblue;
+    padding: 5px 2%;
+    color: white;
+    background-color: #2a9df4;
     border-radius: 10px;
     border: 2px solid #333;
+    max-height: 30px;
+    float: left;
+    font-size: calc(6px + 1vmin);
     &:hover{
-        color: white;
-        border-radius: 10px;
-        border: 2px solid #333;
+        background-color: lightskyblue;
+        cursor: pointer;
     }
 `
 
 const Label = styled.label`
     display: block;
     font-weight: bold;
+    padding-top: 1%;
 `;
 
 const StyledSelect=styled.select`

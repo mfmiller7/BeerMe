@@ -22,15 +22,14 @@ const StyledDiv2=styled.div`
 `
 
 const StyledButton=styled.button`
-    padding: 1% 2%;
-    color: black;
-    background-color: lightskyblue;
+    padding: 10px 20px;
+    color: white;
+    background-color: #2a9df4;
     border-radius: 10px;
     border: 2px solid #333;
     float: right;
     font-size: calc(6px + 1vmin);
     &:hover{
-        color: white;
         background-color: lightskyblue;
         cursor: pointer;
     }
